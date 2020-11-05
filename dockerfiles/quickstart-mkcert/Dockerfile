@@ -9,10 +9,10 @@ RUN apk add --no-cache curl openssl \
     && chmod a+x /usr/local/bin/mkcert \
     && mkcert -version \
     && adduser --disabled-password mkcert \
-    ## Install mkcert certification authorizty, must be done as root user
     && mkcert -install \
     && mkdir -p /certs && chown -R mkcert /certs
 
+## Install mkcert certification authorizty, must be done as root user
 # Drop privileges
 USER mkcert
 WORKDIR /certs
