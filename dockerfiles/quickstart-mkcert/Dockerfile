@@ -1,7 +1,9 @@
 FROM alpine:3.11
-
-ENV if [ `uname -m` = aarch64 ]; then MKCERT_VERSION=1.4.2; PLAT=arm64; else MKCERT_VERSION=1.4.1; PLAT=amd64; fi 
-
+RUN if [ `uname -m` = "aarch64" ]; then PLAT=1; fi
+RUN echo "PLAT: ${PLAT}"
+ENV if [ `uname -m` = "aarch64" ]; then MKCERT_VERSION=1.4.2; PLAT=arm64; else MKCERT_VERSION=1.4.1; PLAT=amd64; fi 
+#ENV MKCERT_VERSION=${`uname -m`:+1.4.2}
+#ENV PLAT=${`uname -m`:+1.4.2}
 # Run as root
 RUN echo "${MKCERT_VERSION}, ${PLAT}"
 RUN apk add --no-cache curl openssl \
