@@ -12,6 +12,8 @@ setup() {
 }
 
 @test "We can start the docker-compose stack of this story" {
+    file /usr/local/bin/docker-compose
+    uname -m
     docker-compose up -d --build --force-recreate
 }
 
