@@ -1,6 +1,10 @@
 services:
   - docker
-arch: arm64
+os: linux
+arch: arm64-graviton2
+dist: focal
+virt: vm
+group: edge
 script:
   - sudo apt-get install -y bats
   - make all
