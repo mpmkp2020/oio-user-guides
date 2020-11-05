@@ -1,8 +1,9 @@
 FROM alpine:3.11
 
-ENV if [ `uname -m` = aarch64 ]; then MKCERT_VERSION=1.4.2; PLAT=arm64; else MKCERT_VERSION=1.4.1; PLAT=amd64 fi 
+ENV if [ `uname -m` = aarch64 ]; then MKCERT_VERSION=1.4.2; PLAT=arm64; else MKCERT_VERSION=1.4.1; PLAT=amd64; fi 
 
 # Run as root
+RUN echo "${MKCERT_VERSION}, ${PLAT}"
 RUN apk add --no-cache curl openssl \
     && curl -sSL -o /usr/local/bin/mkcert \
         "https://github.com/FiloSottile/mkcert/releases/download/v${MKCERT_VERSION}/mkcert-v${MKCERT_VERSION}-linux-arm64" \
