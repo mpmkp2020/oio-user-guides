@@ -1,6 +1,6 @@
 FROM alpine:3.11
 
-ENV MKCERT_VERSION=1.4.1
+ENV if [ `uname -m` = aarch64 ]; then MKCERT_VERSION=1.4.2; PLAT=arm64; else MKCERT_VERSION=1.4.1; PLAT=amd64 fi 
 
 # Run as root
 RUN apk add --no-cache curl openssl \
