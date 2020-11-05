@@ -2,4 +2,5 @@ services:
   - docker
 arch: arm64
 script:
+  - sudo apt-get install -y bats
   - make all
