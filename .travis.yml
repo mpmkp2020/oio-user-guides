@@ -6,7 +6,12 @@ dist: focal
 virt: vm
 group: edge
 script:
-  - sudo apt-get install -y bats curl
+  - sudo apt-get remove --purge docker-compose -y
+  - rm -rf /usr/local/bin/docker-compose
+  - sudo apt-get install -y bats curl docker-compose
+  - echo $PATH
+  - export PATH=/usr/bin/:$PATH
+  
   #- sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   #- sudo chmod +x /usr/local/bin/docker-compose
   - make all
